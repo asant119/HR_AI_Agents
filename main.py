@@ -7,3 +7,16 @@ from tasks import HR_Task
 from dotenv import load_dotenv
 load_dotenv()
 
+inputs={}
+inputs["role"] = str(input("Enter the role: "))
+inputs["inputs"] = str(input("Enter a brief description of the role: "))
+
+crew = Crew(
+    agents=[HRAgent()],
+    tasks=[HR_Task()],
+    inputs=inputs,
+)
+
+result = crew.kickoff(inputs)
+from IPython.display import Markdown
+Markdown(result)
