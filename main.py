@@ -14,9 +14,11 @@ inputs["inputs"] = str(input("Enter a brief description of the role: "))
 crew = Crew(
     agents=[HRAgent()],
     tasks=[HR_Task()],
-    inputs=inputs,
+    verbose=2,
+    memory=True,
 )
 
 result = crew.kickoff(inputs)
+
 from IPython.display import Markdown
 Markdown(result)
