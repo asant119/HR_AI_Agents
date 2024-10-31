@@ -39,6 +39,7 @@ class HR_Task(Task):
                 ),
             expected_output="A well-written bullet point list of requirements for the {role}"
             "in markdown format, ready for job description writing",
+            context=[Task.search_web],
             agent=Agents.HRAgent.Manager(),
         )
     
@@ -58,6 +59,7 @@ class HR_Task(Task):
             ),
             expected_output="A polished and well-structured job description for the {role}, formatted in markdown, "
                     "ready for publishing on job platforms.",
+            context=[Task.search_web, Task.job_requirements],
             agent=Agents.HRAgent.Writer(),
         )
     
@@ -78,6 +80,7 @@ class HR_Task(Task):
                 "ready to be posted.\n"
                 "This response should fully address the hiring manager expectations"
             ),
+            context=[Task.search_web, Task.job_requirements, Task.writing],
             agent=Agents.HRAgent.QualityAssurance(),
         )
 
