@@ -20,10 +20,10 @@ class HRCrew:
         tasks = HR_Tasks()
 
         # Define your custom agents and tasks here
-        benchmarker = agents.Benchmark()
-        manager = agents.Manager()
-        writer = agents.Writer()
-        qa = agents.Quality_Assurance()
+        benchmarker = agents.Benchmark(role=role, inputs=inputs)
+        manager = agents.Manager(role=role, inputs=inputs)
+        writer = agents.Writer(role=role)
+        qa = agents.Quality_Assurance(role=role)
 
 
         # Custom tasks include agent name and variables as input
@@ -74,5 +74,5 @@ if __name__ == "__main__":
     print('-------------------------------')
 
 
-trip_crew = TripCrew(role, inputs)
-result = trip_crew.run()
+hr_crew = HRCrew(role, inputs)
+result = hr_crew.run()
