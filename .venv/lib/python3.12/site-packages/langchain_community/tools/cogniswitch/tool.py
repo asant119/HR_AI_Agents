@@ -7,9 +7,9 @@ from langchain_core.callbacks import CallbackManagerForToolRun
 from langchain_core.tools import BaseTool
 
 
-class CogniswitchKnowledgeRequest(BaseTool):
-    """
-    A tool for interacting with the Cogniswitch service to answer questions.
+class CogniswitchKnowledgeRequest(BaseTool):  # type: ignore[override]
+    """Tool that uses the Cogniswitch service to answer questions.
+
     name: str = "cogniswitch_knowledge_request"
     description: str = (
         "A wrapper around cogniswitch service to answer the question
@@ -24,7 +24,7 @@ class CogniswitchKnowledgeRequest(BaseTool):
     cs_token: str
     OAI_token: str
     apiKey: str
-    api_url = "https://api.cogniswitch.ai:8243/cs-api/0.0.1/cs/knowledgeRequest"
+    api_url: str = "https://api.cogniswitch.ai:8243/cs-api/0.0.1/cs/knowledgeRequest"
 
     def _run(
         self,
@@ -80,10 +80,10 @@ class CogniswitchKnowledgeRequest(BaseTool):
         return response.json()
 
 
-class CogniswitchKnowledgeStatus(BaseTool):
-    """
-    A cogniswitch tool for interacting with the Cogniswitch services to know the
+class CogniswitchKnowledgeStatus(BaseTool):  # type: ignore[override]
+    """Tool that uses the Cogniswitch services to get the
      status of the document or url uploaded.
+
     name: str = "cogniswitch_knowledge_status"
     description: str = (
         "A wrapper around cogniswitch services to know the status of
@@ -98,7 +98,7 @@ class CogniswitchKnowledgeStatus(BaseTool):
     cs_token: str
     OAI_token: str
     apiKey: str
-    knowledge_status_url = (
+    knowledge_status_url: str = (
         "https://api.cogniswitch.ai:8243/cs-api/0.0.1/cs/knowledgeSource/status"
     )
 
@@ -180,9 +180,9 @@ class CogniswitchKnowledgeStatus(BaseTool):
             }
 
 
-class CogniswitchKnowledgeSourceFile(BaseTool):
-    """
-    A cogniswitch tool for interacting with the Cogniswitch services to store data.
+class CogniswitchKnowledgeSourceFile(BaseTool):  # type: ignore[override]
+    """Tool that uses the Cogniswitch services to store data from file.
+
     name: str = "cogniswitch_knowledge_source_file"
     description: str = (
         "This calls the CogniSwitch services to analyze & store data from a file.
@@ -200,7 +200,7 @@ class CogniswitchKnowledgeSourceFile(BaseTool):
     cs_token: str
     OAI_token: str
     apiKey: str
-    knowledgesource_file = (
+    knowledgesource_file: str = (
         "https://api.cogniswitch.ai:8243/cs-api/0.0.1/cs/knowledgeSource/file"
     )
 
@@ -293,9 +293,9 @@ class CogniswitchKnowledgeSourceFile(BaseTool):
             return {"message": "Bad Request"}
 
 
-class CogniswitchKnowledgeSourceURL(BaseTool):
-    """
-    A cogniswitch tool for interacting with the Cogniswitch services to store data.
+class CogniswitchKnowledgeSourceURL(BaseTool):  # type: ignore[override]
+    """Tool that uses the Cogniswitch services to store data from a URL.
+
     name: str = "cogniswitch_knowledge_source_url"
     description: str = (
         "This calls the CogniSwitch services to analyze & store data from a url.
@@ -312,7 +312,7 @@ class CogniswitchKnowledgeSourceURL(BaseTool):
     cs_token: str
     OAI_token: str
     apiKey: str
-    knowledgesource_url = (
+    knowledgesource_url: str = (
         "https://api.cogniswitch.ai:8243/cs-api/0.0.1/cs/knowledgeSource/url"
     )
 
