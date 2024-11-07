@@ -32,13 +32,10 @@ class HRCrew:
         search_task = hr_tasks.search_web(agent=analyst, role=self.role, inputs=self.inputs)
         
         requirements_task = hr_tasks.job_requirements(agent=manager, role=self.role, inputs=self.inputs)
-        requirements_task.set_context([search_task])
 
         writing_task = hr_tasks.writing(agent=writer, role=self.role)
-        writing_task.set_context([search_task, requirements_task])
 
         qa_task = hr_tasks.quality_assurance(agent=qa, role=self.role)
-        qa_task.set_context([search_task, requirements_task, writing_task])
 
         # Define the crew with the agents and tasks
         crew = Crew(

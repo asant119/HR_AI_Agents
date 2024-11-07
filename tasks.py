@@ -1,7 +1,6 @@
 from crewai import Task
 
 class HR_Tasks:
-    
     def search_web(self, agent, role, inputs):
         return Task(
             description=(
@@ -23,7 +22,6 @@ class HR_Tasks:
                     4. Proofread the list for grammatical errors and clarity."""
             ),
             expected_output=f"A categorized bullet point list of requirements for the {role} in markdown format, ready for use in job description writing.",
-            context=[self.search_web],
             agent=agent,
         )
     
@@ -37,7 +35,6 @@ class HR_Tasks:
                     5. Proofread for grammar, spelling, and consistency."""
             ),
             expected_output=f"A polished and well-structured job description for the {role}, formatted in markdown, ready for publishing.",
-            context=[self.search_web, self.job_requirements],
             agent=agent,
         )
     
@@ -52,6 +49,5 @@ class HR_Tasks:
             expected_output=(
                 f"A final, high-quality job description for the {role} position, ready for posting and aligned with hiring manager expectations."
             ),
-            context=[self.search_web, self.job_requirements, self.writing],
             agent=agent,
         )
